@@ -5,7 +5,9 @@ on:
     paths:
       - 'cloudformation/**'
 
-
+permissions:
+  pull-requests: write
+  contents: read
 
 jobs:
   validate-cfn:
