@@ -4,10 +4,10 @@ on:
   pull_request:
     paths:
       - 'cloudformation/**'
-
+      
 permissions:
-  contents: read
   pull-requests: write
+  contents: read
 
 jobs:
   validate-cfn:
