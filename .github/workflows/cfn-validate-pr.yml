@@ -5,15 +5,13 @@ on:
     paths:
       - 'cloudformation/**'
 
-permissions:
-  pull-requests: write
-  contents: read
+
 
 jobs:
   validate-cfn:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -36,12 +34,13 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            github.rest.issue.createComment({
+            github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: 'CloudFormation test stack deployed. Stack name: pr-test-stack-${{ github.event.pull_request.number}}'
                         })
+
   cleanup-on-merge:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
