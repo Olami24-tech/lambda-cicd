@@ -15,11 +15,11 @@ Resources:
     Type: 'AWS::S3::Bucket'
     Properties:
       BucketNmae: !Sub '${AWS::Stackname}-${Environment}-bucket'
-    Tags:
-      - Key: Environmemt
-        Value: !Ref Environmemt
-      - Key:  Environmemt
-        Value: GithubActionsTesting
+      Tags:
+        - Key: Environmemt
+          Value: !Ref Environmemt
+        - Key:  Environmemt
+          Value: GithubActionsTesting
 
 Outputs:
   BucketName: 
