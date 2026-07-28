@@ -22,7 +22,8 @@ It validates CloudFormation templates during Pull Requests and deploys infrastru
 
 ### Successful GitHub Actions Deployment
 
-(Insert screenshot)
+<img width="1892" height="917" alt="Screenshot github actions validation" src="https://github.com/user-attachments/assets/7a473705-3671-4a23-b2f0-392cc08739ca" />
+
 
 ### CloudFormation Stack
 
