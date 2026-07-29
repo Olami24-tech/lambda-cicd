@@ -22,6 +22,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-2
 
+      - name: Print GitHub Event Payload
+        run: |
+          echo '${{ toJson(github.event) }}'    
+
       - name: Validate CloudFormation template
         run: |
           aws cloudformation validate-template --template-body file://cloudformation/s3-bucket.yml
@@ -32,7 +36,7 @@ jobs:
           aws cloudformation create-stack --stack-name $stack_name --template-body file://cloudformation/s3-bucket.yml --parameters ParameterKey=Environment,ParameterValue=test
 
       - name: Comment on the PR
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
